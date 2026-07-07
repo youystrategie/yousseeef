@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youssef • Portfolio</title>
+    
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-circle">
+                        <span>Y</span>
+                    </div>
+                    <span class="logo-text">Youssef</span>
+                </div>
+                
+                <!-- Nav Links -->
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#work">Work</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <a href="#contact" class="btn btn-primary">Let's talk</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">
+                    <div class="badge-dot"></div>
+                    <span>Available for freelance</span>
+                </div>
+                
+                <h1>Hi, I'm <span>Youssef</span>.</h1>
+                <p class="hero-subtitle">Creative Developer &amp; Designer</p>
+                
+                <p>I craft bold digital experiences that blend design and technology.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#work" class="btn btn-primary">
+                        View my work
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-outline">Get in touch</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <span class="section-label">ABOUT ME</span>
+                    <h2 class="section-header">I turn ideas<br>into reality.</h2>
+                </div>
+                <div class="about-text">
+                    <p>I'm a creative developer based in Morocco with a passion for building unique digital experiences.</p>
+                    <p>I specialize in creating bold, modern interfaces and interactive web applications that feel alive.</p>
+                    
+                    <a href="#" class="resume-link">
+                        Download my resume <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work / Projects -->
+    <section id="work" class="section dark-bg">
+        <div class="container">
+            <div class="section-header-wrapper">
+                <div>
+                    <span class="section-label">SELECTED WORK</span>
+                    <h2 class="section-header">Featured Projects</h2>
+                </div>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://picsum.photos/id/1015/800/600');">
+                        <div class="project-year">2025</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Lumina Studio</h3>
+                        <p class="project-desc">A creative platform for visual artists with interactive galleries and real-time collaboration.</p>
+                        <div class="tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Three.js</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://picsum.photos/id/1005/800/600');">
+                        <div class="project-year">2024</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Echo</h3>
+                        <p class="project-desc">Music discovery app with generative visuals and AI-powered recommendations.</p>
+                        <div class="tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">Framer Motion</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://picsum.photos/id/160/800/600');">
+                        <div class="project-year">2024</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Arcade</h3>
+                        <p class="project-desc">A modern, playful design system and component library for startups.</p>
+                        <div class="tags">
+                            <span class="tag">Tailwind</span>
+                            <span class="tag">TypeScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="skills-header">
+                <span class="section-label">SKILLS</span>
+                <h2 class="section-header">What I bring to the table</h2>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-pill">UI/UX Design</div>
+                <div class="skill-pill">Frontend Development</div>
+                <div class="skill-pill">Motion Design</div>
+                <div class="skill-pill">3D &amp; WebGL</div>
+                <div class="skill-pill">Figma</div>
+                <div class="skill-pill">React / Next.js</div>
+                <div class="skill-pill">Tailwind CSS</div>
+                <div class="skill-pill">Creative Coding</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <span class="section-label">LET'S CONNECT</span>
+                <h2 class="section-header">Ready to build something bold?</h2>
+                <p class="contact-subtitle">Tell me about your project or just say hi.</p>
+                
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Your name</label>
+                            <input type="text" class="form-input" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email address</label>
+                            <input type="email" class="form-input" placeholder="you@example.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-textarea" placeholder="Hi Youssef, I'd love to work with you on..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        Send message
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>© 2026 Youssef. All rights reserved.</div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const button = e.target.querySelector('button');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = `Sending... <i class="fas fa-spinner fa-spin"></i>`;
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = `Sent! <i class="fas fa-check"></i>`;
+                button.style.background = '#16a34a';
+                button.style.color = 'white';
+                
+                setTimeout(() => {
+                    e.target.reset();
+                    button.style.background = '';
+                    button.style.color = '';
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    
+                    const toast = document.createElement('div');
+                    toast.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translate(-50%,0);background:#1e2937;border:1px solid #334155;padding:14px 24px;border-radius:9999px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 15px rgb(15 23 42 / 0.2)';
+                    toast.innerHTML = `<i class="fas fa-check-circle" style="color:#34d399"></i> <span>Thanks! I'll reply soon.</span>`;
+                    document.body.appendChild(toast);
+                    
+                    setTimeout(() => {
+                        toast.style.transition = 'all 0.3s';
+                        toast.style.opacity = '0';
+                        setTimeout(() => toast.parentNode.removeChild(toast), 300);
+                    }, 2800);
+                }, 1700);
+            }, 1400);
+        }
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
