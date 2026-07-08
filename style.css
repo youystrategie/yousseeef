@@ -7,38 +7,11 @@
 }
 
 body {
-
-    font-family:'Inter',system-ui,sans-serif;
-
-    color:#f1e7ff;
-
-    line-height:1.6;
-
-    overflow-x:hidden;
-
-    background:
-
-    radial-gradient(circle at 20% 15%,
-    rgba(99,102,241,.18),
-    transparent 30%),
-
-    radial-gradient(circle at 85% 20%,
-    rgba(168,85,247,.18),
-    transparent 35%),
-
-    radial-gradient(circle at 40% 70%,
-    rgba(99,102,241,.12),
-    transparent 30%),
-
-    linear-gradient(
-    180deg,
-    #0f172a 0%,
-    #171634 35%,
-    #21143d 65%,
-    #0f172a 100%);
-
-    background-attachment:fixed;
-
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #0f172a;
+    color: #f1e7ff;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
@@ -595,7 +568,9 @@ transform:translateY(-200px);
 
 .hero{
 
-padding:140px 0 80px;
+    padding:140px 0 80px;
+    background:
+    linear-gradient(135deg,#0f172a 0%,#16132f 50%,#21103d 100%);
 
 }
 
@@ -1074,15 +1049,14 @@ footer {
 
     overflow:hidden;
 
-    margin-top:-180px;
-
-    padding:360px 20px 180px;
+    padding: 180px 20px;
 
     position:relative;
 
     z-index:1;
 
-    background:transparent;
+    background:
+    linear-gradient(135deg,#0f172a 0%,#16132f 50%,#21103d 100%);
 }
 
 .coming-content{
