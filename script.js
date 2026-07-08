@@ -231,3 +231,57 @@ if (year) {
     year.textContent = new Date().getFullYear();
 
 }
+
+const terminal = document.getElementById("terminal-text");
+
+if (terminal) {
+
+    const messages = [
+        "> Initializing...",
+        "> Loading portfolio...",
+        "> Connecting AI systems...",
+        "> Ready."
+    ];
+
+    let message = 0;
+    let letter = 0;
+    let deleting = false;
+
+    function typeTerminal() {
+
+        const current = messages[message];
+
+        if (!deleting) {
+
+            terminal.textContent = current.substring(0, letter++);
+
+            if (letter > current.length) {
+
+                deleting = true;
+
+                setTimeout(typeTerminal, 1200);
+
+                return;
+            }
+
+        } else {
+
+            terminal.textContent = current.substring(0, letter--);
+
+            if (letter < 0) {
+
+                deleting = false;
+
+                message = (message + 1) % messages.length;
+
+            }
+
+        }
+
+        setTimeout(typeTerminal, deleting ? 30 : 60);
+
+    }
+
+    typeTerminal();
+
+}
