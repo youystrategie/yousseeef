@@ -170,31 +170,52 @@
                 <h2 class="section-header">Ready to build something bold?</h2>
                 <p class="contact-subtitle">Tell me about your project or just say hi.</p>
                 
-                <form 
-    action="https://formspree.io/f/xojozdgb" 
+                <form
+    action="https://formspree.io/f/xojozdgb"
     method="POST"
     class="contact-form">
 
+    <input type="hidden" name="_subject" value="New Portfolio Contact Message">
+    <input type="text" name="_gotcha" style="display:none">
+
     <div class="form-row">
+
         <div class="form-group">
             <label class="form-label">Your name</label>
-            <input type="text" name="name" class="form-input" placeholder="John Doe" required>
+            <input
+                type="text"
+                name="name"
+                class="form-input"
+                placeholder="John Doe"
+                required>
         </div>
+
         <div class="form-group">
             <label class="form-label">Email address</label>
-            <input type="email" name="email" class="form-input" placeholder="you@example.com" required>
+            <input
+                type="email"
+                name="email"
+                class="form-input"
+                placeholder="you@example.com"
+                required>
         </div>
+
     </div>
 
     <div class="form-group">
         <label class="form-label">Message</label>
-        <textarea name="message" class="form-textarea" placeholder="Hi Youssef, I'd love to work with you on..." required></textarea>
+        <textarea
+            name="message"
+            class="form-textarea"
+            placeholder="Hi Youssef, I'd love to work with you on...."
+            required></textarea>
     </div>
 
     <button type="submit" class="btn-primary">
         Send message
         <i class="fas fa-paper-plane"></i>
     </button>
+
 </form>
             </div>
         </div>
