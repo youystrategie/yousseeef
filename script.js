@@ -8,6 +8,7 @@
 // ==========================
 
 
+
 const typingElement = document.getElementById("typing-role");
 
 if (typingElement) {
