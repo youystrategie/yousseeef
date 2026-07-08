@@ -30,15 +30,15 @@ if(heroTyping){
 
 const heroWords = [
 
-"📈 Trader",
+    "Trader",
 
-"🤖 AI Enthusiast",
+    "AI Engineer",
 
-"💻 Programmer",
+    "Software Developer",
 
-"🚀 Building The Future",
+    "Automation Builder",
 
-"⚡ Creating Intelligent Systems"
+    "Future Creator"
 
 ];
 
