@@ -285,3 +285,29 @@ if (terminal) {
     typeTerminal();
 
 }
+
+/*======================================================
+                    FOOTER
+======================================================*/
+
+// Automatic Year
+const year = document.getElementById("year");
+
+if (year) {
+    year.textContent = new Date().getFullYear();
+}
+
+// Footer Social Hover Animation
+const socialLinks = document.querySelectorAll(".footer-social a");
+
+socialLinks.forEach(link => {
+
+    link.addEventListener("mouseenter", () => {
+        link.style.transform = "translateX(8px)";
+    });
+
+    link.addEventListener("mouseleave", () => {
+        link.style.transform = "translateX(0)";
+    });
+
+});
