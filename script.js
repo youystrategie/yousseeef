@@ -324,3 +324,47 @@ footerIcons.forEach(icon => {
     });
 
 });
+
+/*=========================================
+            BUILD WITH ME
+=========================================*/
+
+const serviceCards = document.querySelectorAll(".service-card");
+
+serviceCards.forEach(card => {
+
+    card.addEventListener("mouseenter", () => {
+
+        card.animate([
+            {
+                transform: "translateY(0px) scale(1)"
+            },
+            {
+                transform: "translateY(-10px) scale(1.02)"
+            }
+        ], {
+            duration: 250,
+            fill: "forwards",
+            easing: "ease-out"
+        });
+
+    });
+
+    card.addEventListener("mouseleave", () => {
+
+        card.animate([
+            {
+                transform: "translateY(-10px) scale(1.02)"
+            },
+            {
+                transform: "translateY(0px) scale(1)"
+            }
+        ], {
+            duration: 250,
+            fill: "forwards",
+            easing: "ease-out"
+        });
+
+    });
+
+});

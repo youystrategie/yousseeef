@@ -1811,3 +1811,222 @@ margin-top:40px;
 }
 
 }
+
+
+/*=========================================
+            BUILD WITH ME
+=========================================*/
+
+.build-section{
+
+    padding:140px 0;
+
+    position:relative;
+
+}
+
+.section-header{
+
+    max-width:760px;
+
+    margin:0 auto 70px;
+
+    text-align:center;
+
+}
+
+.section-tag{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:999px;
+
+    color:#999;
+
+    font-size:.78rem;
+
+    letter-spacing:3px;
+
+    margin-bottom:25px;
+
+}
+
+.section-header h2{
+
+    font-size:3rem;
+
+    margin-bottom:20px;
+
+    color:#fff;
+
+}
+
+.section-header p{
+
+    color:#9c9c9c;
+
+    line-height:1.8;
+
+    font-size:1.05rem;
+
+}
+
+.services-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+
+    gap:35px;
+
+}
+
+.service-card{
+
+    background:#121212;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    padding:45px;
+
+    transition:.35s ease;
+
+}
+
+.service-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#333;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+}
+
+.service-icon{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:20px;
+
+    background:#fff;
+
+    color:#000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:1.6rem;
+
+    margin-bottom:28px;
+
+}
+
+.service-card h3{
+
+    font-size:1.8rem;
+
+    color:#fff;
+
+    margin-bottom:18px;
+
+}
+
+.service-card p{
+
+    color:#a5a5a5;
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
+
+.service-list{
+
+    list-style:none;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    margin-bottom:35px;
+
+}
+
+.service-list li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:#d4d4d4;
+
+}
+
+.service-list i{
+
+    color:#fff;
+
+}
+
+.service-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:15px 28px;
+
+    border-radius:999px;
+
+    background:#fff;
+
+    color:#000;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.service-btn:hover{
+
+    transform:translateX(6px);
+
+}
+
+@media(max-width:768px){
+
+.section-header h2{
+
+font-size:2.2rem;
+
+}
+
+.service-card{
+
+padding:35px 28px;
+
+}
+
+}
