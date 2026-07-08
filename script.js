@@ -34,55 +34,113 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ==================== CONTACT FORM ====================
-const form = document.querySelector('.contact-form');
+
+const form = document.querySelector(".contact-form");
 
 if (form) {
-    form.addEventListener('submit', function(e) {
+
+    form.addEventListener("submit", async function (e) {
+
         e.preventDefault();
-        
-        const button = form.querySelector('button');
+
+        const button = form.querySelector("button");
         const originalText = button.innerHTML;
-        
-        // Simple validation
-        const inputs = form.querySelectorAll('input, textarea');
+
+        // Validate only required fields
+        const fields = form.querySelectorAll(
+            "input[required], textarea[required]"
+        );
+
         let isValid = true;
-        
-        inputs.forEach(input => {
-            if (!input.value.trim()) {
-                input.style.border = '1px solid #ef4444';
+
+        fields.forEach(field => {
+
+            if (!field.value.trim()) {
+
+                field.style.border = "1px solid #ef4444";
                 isValid = false;
+
             } else {
-                input.style.border = '1px solid #334155';
+
+                field.style.border = "1px solid #334155";
+
             }
+
         });
-        
+
         if (!isValid) {
+
             alert("Please fill in all fields!");
             return;
-        }
-        
-        // Loading state
-        button.innerHTML = `Sending... <i class="fas fa-spinner fa-spin"></i>`;
-        button.disabled = true;
-        
-        // Simulate sending (replace with real backend later)
-        setTimeout(() => {
-            button.innerHTML = `Message Sent! <i class="fas fa-check"></i>`;
-            button.style.background = '#16a34a';
-            
-            setTimeout(() => {
-                form.reset();
-                button.style.background = '';
-                button.innerHTML = originalText;
-                button.disabled = false;
-                
-                // Success toast
-                showToast("Thank you! I'll get back to you soon.");
-            }, 1800);
-        }, 1500);
-    });
-}
 
+        }
+
+        // Loading
+
+        button.disabled = true;
+
+        button.innerHTML =
+            `Sending... <i class="fas fa-spinner fa-spin"></i>`;
+
+        try {
+
+            const response = await fetch(form.action, {
+
+                method: "POST",
+
+                body: new FormData(form),
+
+                headers: {
+
+                    Accept: "application/json"
+
+                }
+
+            });
+
+            if (response.ok) {
+
+                button.innerHTML =
+                    `Message Sent! <i class="fas fa-check"></i>`;
+
+                button.style.background = "#16a34a";
+
+                form.reset();
+
+                showToast("✅ Thank you! Your message has been sent.");
+
+            } else {
+
+                throw new Error("Formspree Error");
+
+            }
+
+        }
+
+        catch (error) {
+
+            button.innerHTML =
+                `Send Failed <i class="fas fa-times"></i>`;
+
+            button.style.background = "#dc2626";
+
+            showToast("❌ Something went wrong. Please try again.");
+
+        }
+
+        setTimeout(() => {
+
+            button.disabled = false;
+
+            button.style.background = "";
+
+            button.innerHTML = originalText;
+
+        }, 2500);
+
+    });
+
+}
 // Toast notification function
 function showToast(message) {
     const toast = document.createElement('div');
