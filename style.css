@@ -1930,3 +1930,12 @@ position:relative;
 z-index:2;
 
 }
+
+html{
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px;
+}
+
+#contact{
+    scroll-margin-top: 110px;
+}
