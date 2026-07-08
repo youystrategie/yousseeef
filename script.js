@@ -290,24 +290,42 @@ if (terminal) {
                     FOOTER
 ======================================================*/
 
-// Automatic Year
+// Automatic Copyright Year
 const year = document.getElementById("year");
 
 if (year) {
     year.textContent = new Date().getFullYear();
 }
 
-// Footer Social Hover Animation
-const socialLinks = document.querySelectorAll(".footer-social a");
+// Footer Social Animation
+const footerIcons = document.querySelectorAll(".footer-social a");
 
-socialLinks.forEach(link => {
+footerIcons.forEach(icon => {
 
-    link.addEventListener("mouseenter", () => {
-        link.style.transform = "translateX(8px)";
+    icon.addEventListener("mouseenter", () => {
+
+        icon.animate([
+            { transform: "translateY(0px) scale(1)" },
+            { transform: "translateY(-5px) scale(1.08)" }
+        ], {
+            duration: 200,
+            fill: "forwards",
+            easing: "ease-out"
+        });
+
     });
 
-    link.addEventListener("mouseleave", () => {
-        link.style.transform = "translateX(0)";
+    icon.addEventListener("mouseleave", () => {
+
+        icon.animate([
+            { transform: "translateY(-5px) scale(1.08)" },
+            { transform: "translateY(0px) scale(1)" }
+        ], {
+            duration: 200,
+            fill: "forwards",
+            easing: "ease-out"
+        });
+
     });
 
 });
