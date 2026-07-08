@@ -46,28 +46,50 @@ if (container) {
 
     container.appendChild(renderer.domElement);
 
-    // Lights
-    const ambient = new THREE.AmbientLight(0xffffff, 1.4);
+    /*==========================
+      CINEMATIC LIGHTING
+==========================*/
+
+    const ambient = new THREE.AmbientLight(0xffffff,0.35);
     scene.add(ambient);
 
-    const light = new THREE.DirectionalLight(0xffffff, 2);
-    light.position.set(5, 5, 5);
-    scene.add(light);
+    // Main light
+    const keyLight = new THREE.DirectionalLight(0xffffff,4);
+    keyLight.position.set(4,5,6);
+    scene.add(keyLight);
 
-    const backLight = new THREE.PointLight(0xffffff, 1.5);
-    backLight.position.set(-5, -5, -5);
-    scene.add(backLight);
+    // Rim light
+    const rimLight = new THREE.DirectionalLight(0xffffff,2);
+    rimLight.position.set(-6,2,-6);
+    scene.add(rimLight);
+
+    // Bottom fill
+    const fillLight = new THREE.PointLight(0xffffff,2);
+    fillLight.position.set(0,-4,3);
+    scene.add(fillLight);
 
     // Sphere
     const geometry = new THREE.SphereGeometry(1, 128, 128);
 
     const material = new THREE.MeshPhysicalMaterial({
-        color: 0x111111,
-        metalness: 0.9,
-        roughness: 0.15,
-        clearcoat: 1,
-        clearcoatRoughness: 0.05
-    });
+
+    color:0x050505,
+
+    metalness:1,
+
+    roughness:0.05,
+
+    clearcoat:1,
+
+    clearcoatRoughness:0,
+
+    transmission:0.15,
+
+    ior:2.3,
+
+    reflectivity:1
+
+});
 
     const sphere = new THREE.Mesh(
         geometry,
@@ -75,6 +97,82 @@ if (container) {
     );
 
     scene.add(sphere);
+
+    /*==========================
+      INNER CORE
+    ==========================*/
+
+    const core = new THREE.Mesh(
+
+        new THREE.SphereGeometry(.42,64,64),
+
+        new THREE.MeshBasicMaterial({
+
+            color:0xffffff
+
+        })
+
+    );
+
+sphere.add(core);
+
+/*==========================
+        PARTICLES
+==========================*/
+
+const particleCount = 1500;
+
+const positions = new Float32Array(particleCount * 3);
+
+for (let i = 0; i < particleCount; i++) {
+
+    const radius = 2.8 + Math.random() * 1.2;
+
+    const theta = Math.random() * Math.PI * 2;
+
+    const phi = Math.acos(2 * Math.random() - 1);
+
+    positions[i * 3] =
+        radius * Math.sin(phi) * Math.cos(theta);
+
+    positions[i * 3 + 1] =
+        radius * Math.sin(phi) * Math.sin(theta);
+
+    positions[i * 3 + 2] =
+        radius * Math.cos(phi);
+
+}
+
+const particleGeometry = new THREE.BufferGeometry();
+
+particleGeometry.setAttribute(
+    "position",
+    new THREE.BufferAttribute(positions, 3)
+);
+
+const particleMaterial = new THREE.PointsMaterial({
+
+    color:0xffffff,
+
+    size:0.018,
+
+    transparent:true,
+
+    opacity:0.7,
+
+    depthWrite:false
+
+});
+
+const particles = new THREE.Points(
+
+    particleGeometry,
+
+    particleMaterial
+
+);
+
+scene.add(particles);
 
     /*==========================
         ORBIT RINGS
@@ -137,9 +235,22 @@ scene.add(ring3);
     // Animation
     function animate() {
 
+        particles.rotation.y += 0.0008;
+
+        particles.rotation.x += 0.0002;
+
+        particles.rotation.z -= 0.0004;
+
         requestAnimationFrame(animate);
 
         sphere.rotation.y += 0.004;
+        const t = Date.now()*0.001;
+
+        core.scale.setScalar(
+
+        0.9 + Math.sin(t*3)*0.08
+
+        );
         ring1.rotation.z += .003;
 
         ring2.rotation.x += .002;
