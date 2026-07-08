@@ -447,3 +447,232 @@ ${Math.cos(angle*Math.PI/180)*20}px)`;
 },25);
 
 });
+
+/*==================================================
+                PREMIUM HERO
+==================================================*/
+
+// ================= TYPEWRITER =================
+
+const role = document.getElementById("typing-role");
+
+if (role) {
+
+    const roles = [
+
+        "📈 Trader",
+        "🤖 AI Enthusiast",
+        "💻 Programmer",
+        "🚀 Building My Future",
+        "✨ Turning Ideas Into Reality"
+
+    ];
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeRole() {
+
+        const current = roles[roleIndex];
+
+        if (!deleting) {
+
+            role.textContent = current.substring(0, charIndex++);
+
+            if (charIndex > current.length) {
+
+                deleting = true;
+
+                setTimeout(typeRole, 1700);
+
+                return;
+
+            }
+
+        } else {
+
+            role.textContent = current.substring(0, charIndex--);
+
+            if (charIndex < 0) {
+
+                deleting = false;
+
+                roleIndex++;
+
+                if (roleIndex >= roles.length)
+                    roleIndex = 0;
+
+            }
+
+        }
+
+        setTimeout(typeRole, deleting ? 40 : 80);
+
+    }
+
+    typeRole();
+
+}
+
+
+// ================= MOUSE PARALLAX =================
+
+const hero = document.querySelector(".hero");
+
+const gradients = document.querySelectorAll(
+".gradient-1,.gradient-2,.gradient-3"
+);
+
+if(hero){
+
+hero.addEventListener("mousemove",(e)=>{
+
+const x=(e.clientX/window.innerWidth)-0.5;
+const y=(e.clientY/window.innerHeight)-0.5;
+
+gradients.forEach((g,index)=>{
+
+const speed=(index+1)*18;
+
+g.style.transform=
+`translate(${x*speed}px,${y*speed}px)`;
+
+});
+
+});
+
+}
+
+
+// ================= CURSOR GLOW =================
+
+if(hero){
+
+const glow=document.createElement("div");
+
+glow.className="cursor-glow";
+
+hero.appendChild(glow);
+
+hero.addEventListener("mousemove",(e)=>{
+
+const rect=hero.getBoundingClientRect();
+
+glow.style.left=(e.clientX-rect.left)+"px";
+
+glow.style.top=(e.clientY-rect.top)+"px";
+
+});
+
+}
+
+
+// ================= HERO PARTICLES =================
+
+const particles=document.querySelector(".particles");
+
+if(particles){
+
+for(let i=0;i<45;i++){
+
+const dot=document.createElement("span");
+
+dot.className="particle";
+
+dot.style.left=Math.random()*100+"%";
+
+dot.style.top=Math.random()*100+"%";
+
+dot.style.animationDuration=
+6+Math.random()*8+"s";
+
+dot.style.animationDelay=
+Math.random()*5+"s";
+
+particles.appendChild(dot);
+
+}
+
+}
+
+
+// ================= HERO REVEAL =================
+
+const heroItems=document.querySelectorAll(
+
+".wave-container,.hero-title,#typing-role,.hero-description,.hero-buttons,.scroll-indicator"
+
+);
+
+const heroObserver=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+},{threshold:.2});
+
+heroItems.forEach(item=>{
+
+item.style.opacity="0";
+
+item.style.transform="translateY(50px)";
+
+item.style.transition="1s ease";
+
+heroObserver.observe(item);
+
+});
+
+
+// ================= FLOAT BUTTONS =================
+
+document.querySelectorAll(".hero-buttons .btn")
+
+.forEach(btn=>{
+
+btn.addEventListener("mouseenter",()=>{
+
+btn.style.transform="translateY(-6px)";
+
+});
+
+btn.addEventListener("mouseleave",()=>{
+
+btn.style.transform="translateY(0px)";
+
+});
+
+});
+
+
+// ================= RANDOM SPARKLES =================
+
+setInterval(()=>{
+
+const sparkle=document.createElement("div");
+
+sparkle.className="sparkle";
+
+sparkle.style.left=Math.random()*100+"%";
+
+sparkle.style.top=Math.random()*100+"%";
+
+hero.appendChild(sparkle);
+
+setTimeout(()=>{
+
+sparkle.remove();
+
+},2000);
+
+},500);
