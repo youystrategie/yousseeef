@@ -128,8 +128,7 @@ nav {
 
     align-items:center;
 
-    background:
-    linear-gradient(135deg,#0f172a 0%,#16132f 45%,#21103d 100%);
+    background:transparent;
 
 }
 
@@ -1046,7 +1045,13 @@ footer {
 
     overflow:hidden;
 
-    padding:180px 20px;
+    margin-top:-180px;
+
+    padding:360px 20px 180px;
+
+    position:relative;
+
+    z-index:1;
 
     background:
     radial-gradient(circle at 20% 20%,rgba(99,102,241,.12),transparent 35%),
