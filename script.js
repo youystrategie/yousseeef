@@ -7,124 +7,111 @@
 // Hero Typewriter
 // ==========================
 
-
 import * as THREE from "three";
+
 /*====================================================
-                AI CORE
+                    AI CORE
 ====================================================*/
 
 const container = document.getElementById("ai-core");
 
 if (container) {
 
+    // Scene
     const scene = new THREE.Scene();
 
+    // Camera
     const camera = new THREE.PerspectiveCamera(
-
         45,
-
         container.clientWidth / container.clientHeight,
-
         0.1,
-
         100
-
     );
 
     camera.position.z = 5;
 
+    // Renderer
     const renderer = new THREE.WebGLRenderer({
-
         antialias: true,
-
         alpha: true
-
     });
 
     renderer.setPixelRatio(window.devicePixelRatio);
-
     renderer.setSize(
-
         container.clientWidth,
-
         container.clientHeight
-
     );
+
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     container.appendChild(renderer.domElement);
-}
 
-    const ambient = new THREE.AmbientLight(
-
-        0xffffff,
-
-        1.2
-
-    );
-
+    // Lights
+    const ambient = new THREE.AmbientLight(0xffffff, 1.4);
     scene.add(ambient);
 
-    const light = new THREE.DirectionalLight(
-
-        0xffffff,
-
-        2
-
-    );
-
-    light.position.set(5,5,5);
-
+    const light = new THREE.DirectionalLight(0xffffff, 2);
+    light.position.set(5, 5, 5);
     scene.add(light);
 
-    const backLight = new THREE.PointLight(
-
-        0xffffff,
-
-        1.5
-
-    );
-
-    backLight.position.set(-5,-5,-5);
-
+    const backLight = new THREE.PointLight(0xffffff, 1.5);
+    backLight.position.set(-5, -5, -5);
     scene.add(backLight);
-        const geometry = new THREE.SphereGeometry(
 
-        1,
-
-        128,
-
-        128
-
-    );
+    // Sphere
+    const geometry = new THREE.SphereGeometry(1, 128, 128);
 
     const material = new THREE.MeshPhysicalMaterial({
-
-        color:0x111111,
-
-        metalness:.85,
-
-        roughness:.15,
-
-        transmission:.15,
-
-        clearcoat:1,
-
-        clearcoatRoughness:.05
-
+        color: 0x111111,
+        metalness: 0.9,
+        roughness: 0.15,
+        clearcoat: 1,
+        clearcoatRoughness: 0.05
     });
 
     const sphere = new THREE.Mesh(
-
         geometry,
-
         material
-
     );
 
     scene.add(sphere);
 
+    // Animation
+    function animate() {
 
-    
+        requestAnimationFrame(animate);
+
+        sphere.rotation.y += 0.004;
+        sphere.rotation.x += 0.001;
+
+        sphere.position.y = Math.sin(Date.now() * 0.0015) * 0.15;
+
+        renderer.render(scene, camera);
+
+    }
+
+    animate();
+
+    // Resize
+    window.addEventListener("resize", () => {
+
+        camera.aspect =
+            container.clientWidth /
+            container.clientHeight;
+
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(
+            container.clientWidth,
+            container.clientHeight
+        );
+
+    });
+
+}
+
+
+
 const typingElement = document.getElementById("typing-role");
 
 if (typingElement) {
