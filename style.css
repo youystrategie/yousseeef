@@ -476,25 +476,37 @@ footer {
 
     .mobile-menu-btn{
 
-        display:flex;
-        align-items:center;
-        justify-content:center;
+    width:52px;
 
-        width:48px;
-        height:48px;
+    height:52px;
 
-        border:none;
+    border:none;
 
-        border-radius:12px;
+    border-radius:16px;
 
-        background:#1e2937;
+    background:#1e2937;
 
-        color:white;
+    color:white;
 
-        cursor:pointer;
+    display:flex;
 
-        font-size:22px;
-    }
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    font-size:24px;
+
+    transition:.3s;
+
+}
+
+.mobile-menu-btn:hover{
+
+    background:#6366f1;
+
+}
 
     .nav-links{
 
@@ -561,6 +573,42 @@ footer {
 
     .form-row{
         grid-template-columns:1fr;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .nav-actions{
+        display:none;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .nav-content{
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:space-between;
+
+        padding:16px 20px;
+
+    }
+
+    .logo{
+
+        gap:12px;
+
+    }
+
+    .logo-text{
+
+        font-size:2rem;
+
     }
 
 }
