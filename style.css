@@ -1733,3 +1733,27 @@ z-index:2;
     transform:translateY(-3px);
 
 }
+
+
+#ai-core{
+
+    width:520px;
+
+    height:520px;
+
+    margin:auto;
+
+}
+@media(max-width:768px){
+
+#ai-core{
+
+width:320px;
+
+height:320px;
+
+margin-top:40px;
+
+}
+
+}
