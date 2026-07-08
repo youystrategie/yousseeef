@@ -290,13 +290,6 @@ if (terminal) {
                     FOOTER
 ======================================================*/
 
-// Automatic Copyright Year
-const year = document.getElementById("year");
-
-if (year) {
-    year.textContent = new Date().getFullYear();
-}
-
 // Footer Social Animation
 const footerIcons = document.querySelectorAll(".footer-social a");
 
