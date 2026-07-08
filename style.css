@@ -21,15 +21,9 @@ scroll-behavior:smooth;
 
 body{
 
-font-family:"Inter",sans-serif;
+    background:#0a0a0a;
 
-background:#0b1020;
-
-color:white;
-
-overflow-x:hidden;
-
-line-height:1.6;
+    color:white;
 
 }
 
@@ -37,21 +31,21 @@ line-height:1.6;
 
 :root{
 
---primary:#6366f1;
+    --background:#0a0a0a;
 
---secondary:#8b5cf6;
+    --surface:#111111;
 
---pink:#ec4899;
+    --card:#171717;
 
---text:#f8fafc;
+    --border:rgba(255,255,255,.08);
 
---muted:#94a3b8;
+    --text:#ffffff;
 
---card:rgba(255,255,255,.05);
+    --text-light:#b3b3b3;
 
---border:rgba(255,255,255,.08);
+    --primary:#ffffff;
 
---shadow:0 25px 60px rgba(0,0,0,.45);
+    --secondary:#1e1e1e;
 
 }
 
@@ -83,21 +77,7 @@ overflow:hidden;
 
 z-index:-20;
 
-background:
-
-linear-gradient(
-
-180deg,
-
-#0b1020,
-
-#121b36 35%,
-
-#1b1638 70%,
-
-#0b1020
-
-);
+background:#0a0a0a;
 
 }
 
@@ -227,11 +207,12 @@ width:100%;
 
 z-index:1000;
 
+background:rgba(10,10,10,.82);
+
 backdrop-filter:blur(18px);
 
-background:rgba(11,16,32,.35);
+border-bottom:1px solid rgba(255,255,255,.06);
 
-border-bottom:1px solid rgba(255,255,255,.05);
 
 }
 
@@ -267,17 +248,7 @@ height:46px;
 
 border-radius:14px;
 
-background:
-
-linear-gradient(
-
-135deg,
-
-#6366f1,
-
-#8b5cf6
-
-);
+background:#0a0a0a;
 
 display:flex;
 
@@ -359,19 +330,21 @@ cursor:pointer;
 
 background:white;
 
-color:#0b1020;
+color:black;
 
 }
 
 .btn-primary:hover{
 
-transform:translateY(-4px);
+background:#ececec;
 
 }
 
 .btn-outline{
 
-border:1px solid rgba(255,255,255,.18);
+background:transparent;
+
+border:1px solid rgba(255,255,255,.12);
 
 color:white;
 
@@ -379,10 +352,9 @@ color:white;
 
 .btn-outline:hover{
 
-background:rgba(255,255,255,.06);
+background:#181818;
 
 }
-
 
 /*======================================================
                     HERO
@@ -502,7 +474,7 @@ background:rgba(255,255,255,.06);
 
     box-shadow:
 
-    0 20px 60px rgba(0,0,0,.35);
+    0 15px 40px rgba(0,0,0,.35);
 
     transition:.4s;
 
@@ -612,21 +584,21 @@ background:rgba(255,255,255,.06);
 
 .btn-primary{
 
-    background:#ffffff;
+    background:white;
 
-    color:#000;
+    color:black;
 
 }
 
 .btn-primary:hover{
 
-    transform:translateY(-4px);
-
-    background:#f5f5f5;
+    background:#ececec;
 
 }
 
 .btn-outline{
+
+    background:transparent;
 
     border:1px solid rgba(255,255,255,.12);
 
@@ -636,7 +608,7 @@ background:rgba(255,255,255,.06);
 
 .btn-outline:hover{
 
-    background:#171717;
+    background:#181818;
 
 }
 
@@ -764,13 +736,7 @@ width:450px;
 
 height:450px;
 
-background:
-
-radial-gradient(circle,
-
-rgba(99,102,241,.18),
-
-transparent 70%);
+background:#0a0a0a;
 
 top:-200px;
 
@@ -792,13 +758,7 @@ width:380px;
 
 height:380px;
 
-background:
-
-radial-gradient(circle,
-
-rgba(236,72,153,.15),
-
-transparent 70%);
+background:#0a0a0a;
 
 bottom:-160px;
 
@@ -856,19 +816,7 @@ margin-bottom:30px;
 
 .glass-card h2 span{
 
-background:
-
-linear-gradient(
-
-90deg,
-
-#6366f1,
-
-#8b5cf6,
-
-#ec4899
-
-);
+background:#0a0a0a;
 
 background-size:300%;
 
@@ -1004,19 +952,7 @@ height:100%;
 
 width:35%;
 
-background:
-
-linear-gradient(
-
-90deg,
-
-#6366f1,
-
-#8b5cf6,
-
-#ec4899
-
-);
+background:#0a0a0a;
 
 border-radius:999px;
 
@@ -1208,7 +1144,7 @@ display:none;
 
     overflow:hidden;
 
-    background:rgba(255,255,255,.05);
+    background:#111111;
 
     backdrop-filter:blur(20px);
 
@@ -1234,21 +1170,7 @@ display:none;
 
     padding:2px;
 
-    background:
-
-        linear-gradient(
-
-            135deg,
-
-            #6366f1,
-
-            #8b5cf6,
-
-            #ec4899,
-
-            #6366f1
-
-        );
+    background:#0a0a0a;
 
     background-size:300%;
 
@@ -1412,19 +1334,7 @@ display:none;
 
     border-radius:999px;
 
-    background:
-
-        linear-gradient(
-
-            135deg,
-
-            #6366f1,
-
-            #8b5cf6,
-
-            #ec4899
-
-        );
+    background:#0a0a0a;
 
     background-size:300%;
 
@@ -1609,17 +1519,7 @@ footer{
 
     height:2px;
 
-    background:
-
-    linear-gradient(
-
-        90deg,
-
-        white,
-
-        transparent
-
-    );
+    background:#0a0a0a;
 
     transform:rotate(-25deg);
 
@@ -1739,13 +1639,7 @@ height:320px;
 
 border-radius:50%;
 
-background:
-
-radial-gradient(circle,
-
-rgba(99,102,241,.18),
-
-transparent 70%);
+background:#0a0a0a;
 
 filter:blur(35px);
 
@@ -1885,19 +1779,7 @@ backdrop-filter:blur(18px);
 
 .gradient-text{
 
-background:
-
-linear-gradient(
-
-90deg,
-
-#6366f1,
-
-#8b5cf6,
-
-#ec4899
-
-);
+background:#0a0a0a;
 
 background-size:300%;
 
