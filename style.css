@@ -409,23 +409,51 @@ padding-top:120px;
 
 .hero-greeting{
 
-display:flex;
+display:inline-flex;
 
 align-items:center;
 
-gap:15px;
+gap:12px;
 
-margin-bottom:30px;
+padding:12px 20px;
 
-color:#d8d4ff;
+border-radius:999px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+margin-bottom:35px;
+
+backdrop-filter:blur(12px);
 
 }
 
-.wave{
+.status-dot{
 
-font-size:52px;
+width:10px;
 
-animation:wave 2s infinite;
+height:10px;
+
+border-radius:50%;
+
+background:#4ade80;
+
+box-shadow:0 0 18px #4ade80;
+
+animation:pulse 2s infinite;
+
+}
+
+.status-text{
+
+font-size:.95rem;
+
+font-weight:600;
+
+letter-spacing:.5px;
+
+color:#e2e8f0;
 
 }
 
@@ -553,17 +581,31 @@ animation:wheel 1.5s infinite;
                 ANIMATIONS
 ======================================================*/
 
-@keyframes wave{
+@keyframes pulse{
 
-0%{transform:rotate(0)}
+0%{
 
-20%{transform:rotate(18deg)}
+transform:scale(1);
 
-40%{transform:rotate(-10deg)}
+opacity:1;
 
-60%{transform:rotate(18deg)}
+}
 
-100%{transform:rotate(0)}
+50%{
+
+transform:scale(1.4);
+
+opacity:.55;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
 
 }
 
