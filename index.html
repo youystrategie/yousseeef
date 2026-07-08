@@ -10,362 +10,260 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
+
+    <!-- ==========================================
+                GLOBAL BACKGROUND
+    =========================================== -->
+
+    <div class="background">
+
+        <div class="aurora aurora-1"></div>
+        <div class="aurora aurora-2"></div>
+        <div class="aurora aurora-3"></div>
+
+        <div class="stars"></div>
+
+        <div class="mouse-glow"></div>
+
+    </div>
+
+    <!-- ==========================================
+                    NAVBAR
+    =========================================== -->
+
     <nav>
-        <div class="container">
-            <div class="nav-content">
-                <!-- Logo -->
-                <div class="logo">
-                    <div class="logo-circle">
-                        <span>Y</span>
-                    </div>
-                    <span class="logo-text">Youssef</span>
-                </div>
-                
-                <!-- Nav Links -->
-                <div class="nav-links">
-                    <a href="#about">About</a>
-                    <a href="#work">Work</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                
-                <div class="nav-actions">
-                    <a href="#contact" class="btn btn-primary">Let's talk</a>
-                </div>
+
+        <div class="container nav-content">
+
+            <div class="logo">
+
+                <div class="logo-circle">Y</div>
+
+                <span class="logo-text">
+
+                    Youssef
+
+                </span>
+
             </div>
+
+            <div class="nav-links">
+
+                <a href="#hero">Home</a>
+
+                <a href="#journey">Journey</a>
+
+                <a href="#contact">Contact</a>
+
+            </div>
+
+            <a href="#contact" class="btn btn-primary">
+
+                Let's Talk
+
+            </a>
+
         </div>
+
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
+    <!-- ==========================================
+                    HERO
+    =========================================== -->
 
-        <div class="hero-bg">
+    <section id="hero" class="hero">
 
-            <div class="gradient-1"></div>
-            <div class="gradient-2"></div>
-            <div class="gradient-3"></div>
-
-            <div class="particles"></div>
-
-        </div>
-
-<div class="container">
-
-<div class="hero-content">
-
-<div class="wave-container">
-
-<span class="wave-hand">👋</span>
-
-<span class="hello">
-Welcome to my world
-</span>
-
-</div>
-
-<h1 class="hero-title">
-
-<span class="word">Hi,</span>
-
-<span class="word">I'm</span>
-
-<span class="hero-name">
-Youssef
-</span>
-
-</h1>
-
-<h2 id="typing-role"></h2>
-
-<p class="hero-description">
-
-Trader with over one year of experience,
-passionate about financial markets.
-
-I'm also exploring AI and software development,
-building projects that combine technology,
-automation and intelligent systems.
-
-Every day I learn something new.
-
-</p>
-
-    <div class="hero-buttons">
-
-        <a href="#coming-soon" class="btn btn-primary">
-
-            Discover My Journey
-
-            <i class="fas fa-arrow-right"></i>
-
-        </a>
-
-<a href="#contact" class="btn btn-outline">
-
-    Let's Connect
-
-</a>
-
-    </div>
-
-<div class="scroll-indicator">
-
-<div class="mouse">
-
-<div class="wheel"></div>
-
-</div>
-
-<span>
-
-Scroll to explore
-
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</header>
-
-    <!-- About Section -->
-    <!-- <section id="about" class="section">
         <div class="container">
-            <div class="about-grid">
-                <div>
-                    <span class="section-label">ABOUT ME</span>
-                    <h2 class="section-header">I turn ideas<br>into reality.</h2>
+
+            <div class="hero-content">
+
+                <div class="hero-greeting">
+
+                    <span class="wave">
+
+                        👋
+
+                    </span>
+
+                    <span>
+
+                        Welcome
+
+                    </span>
+
                 </div>
-                <div class="about-text">
-                    <p>I'm a creative developer based in Morocco with a passion for building unique digital experiences.</p>
-                    <p>I specialize in creating bold, modern interfaces and interactive web applications that feel alive.</p>
-                    
-                    <a href="#" class="resume-link">
-                        Download my resume <i class="fas fa-download"></i>
+
+                <h1>
+
+                    Hi,
+
+                    <br>
+
+                    I'm
+
+                    <span class="gradient-name">
+
+                        Youssef
+
+                    </span>
+
+                </h1>
+
+                <h2 id="typing-role"></h2>
+
+                <p>
+
+                    Trader with over one year of experience in the financial markets.
+
+                    Passionate about Artificial Intelligence, automation and software development.
+
+                    Every day I'm building the future one project at a time.
+
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#journey" class="btn btn-primary">
+
+                        Discover My Journey
+
                     </a>
+
+                    <a href="#contact" class="btn btn-outline">
+
+                        Contact Me
+
+                    </a>
+
                 </div>
-            </div>
-        </div>
-    </section> -->
 
-    <!-- Work / Projects -->
-    <!-- <section id="work" class="section dark-bg">
-        <div class="container">
-            <div class="section-header-wrapper">
-                <div>
-                    <span class="section-label">SELECTED WORK</span>
-                    <h2 class="section-header">Featured Projects</h2>
+                <div class="scroll-down">
+
+                    <div class="mouse">
+
+                        <div class="wheel"></div>
+
+                    </div>
+
                 </div>
-            </div>
-            
-            <div class="projects-grid"> -->
-                <!-- Project 1 -->
-                <!-- <div class="project-card">
-                    <div class="project-image" style="background-image: url('https://picsum.photos/id/1015/800/600');">
-                        <div class="project-year">2025</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Lumina Studio</h3>
-                        <p class="project-desc">A creative platform for visual artists with interactive galleries and real-time collaboration.</p>
-                        <div class="tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Three.js</span>
-                        </div>
-                    </div>
-                </div> -->
-                
-                <!-- Project 2 -->
-                <!-- <div class="project-card">
-                    <div class="project-image" style="background-image: url('https://picsum.photos/id/1005/800/600');">
-                        <div class="project-year">2024</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Echo</h3>
-                        <p class="project-desc">Music discovery app with generative visuals and AI-powered recommendations.</p>
-                        <div class="tags">
-                            <span class="tag">Next.js</span>
-                            <span class="tag">Framer Motion</span>
-                        </div>
-                    </div>
-                </div>
-                 -->
-                <!-- Project 3 -->
-                <!-- <div class="project-card">
-                    <div class="project-image" style="background-image: url('https://picsum.photos/id/160/800/600');">
-                        <div class="project-year">2024</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Arcade</h3>
-                        <p class="project-desc">A modern, playful design system and component library for startups.</p>
-                        <div class="tags">
-                            <span class="tag">Tailwind</span>
-                            <span class="tag">TypeScript</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- Skills Section -->
-    <!-- <section id="skills" class="section">
-        <div class="container">
-            <div class="skills-header">
-                <span class="section-label">SKILLS</span>
-                <h2 class="section-header">What I bring to the table</h2>
-            </div>
-            
-            <div class="skills-grid">
-                <div class="skill-pill">UI/UX Design</div>
-                <div class="skill-pill">Frontend Development</div>
-                <div class="skill-pill">Motion Design</div>
-                <div class="skill-pill">3D &amp; WebGL</div>
-                <div class="skill-pill">Figma</div>
-                <div class="skill-pill">React / Next.js</div>
-                <div class="skill-pill">Tailwind CSS</div>
-                <div class="skill-pill">Creative Coding</div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- ==================== STAY TUNED ==================== -->
-
-<section id="coming-soon" class="coming-soon">
-
-    <div class="floating-orb orb-1"></div>
-    <div class="floating-orb orb-2"></div>
-    <div class="floating-orb orb-3"></div>
-
-    <div class="container">
-
-        <div class="coming-content">
-
-            <span class="coming-label">
-                ✦ UNDER CONSTRUCTION
-            </span>
-
-            <h2 class="coming-title">
-                Something
-                <span>Extraordinary</span>
-                is on the way.
-            </h2>
-
-            <p class="coming-text">
-
-                I'm currently crafting projects that combine
-                AI, modern web development and creative design.
-
-                <br><br>
-
-                Every line of code is part of something bigger.
-
-            </p>
-
-            <div class="typing-wrapper">
-
-                <span id="typing-text"></span>
-
-                <span class="cursor">|</span>
 
             </div>
-
-            <div class="loader">
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </div>
-
-            <p class="coming-footer">
-
-                Stay tuned.
-                The best is yet to come.
-
-            </p>
 
         </div>
 
-    </div>
-
-</section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="contact-wrapper">
-                <span class="section-label">LET'S CONNECT</span>
-                <h2 class="section-header">Ready to build something bold?</h2>
-                <p class="contact-subtitle">Tell me about your project or just say hi.</p>
-                
-                <form
-    action="https://formspree.io/f/xojozdgb"
-    method="POST"
-    class="contact-form">
-
-    <input type="hidden" name="_subject" value="New Portfolio Contact Message">
-    <input type="text" name="_gotcha" style="display:none">
-
-    <div class="form-row">
-
-        <div class="form-group">
-            <label class="form-label">Your name</label>
-            <input
-                type="text"
-                name="name"
-                class="form-input"
-                placeholder="John Doe"
-                required>
-        </div>
-
-        <div class="form-group">
-            <label class="form-label">Email address</label>
-            <input
-                type="email"
-                name="email"
-                class="form-input"
-                placeholder="you@example.com"
-                required>
-        </div>
-
-    </div>
-
-    <div class="form-group">
-        <label class="form-label">Message</label>
-        <textarea
-            name="message"
-            class="form-textarea"
-            placeholder="Hi Youssef, I'd love to work with you on...."
-            required></textarea>
-    </div>
-
-    <button type="submit" class="contact-btn">
-    <span>Send Message</span>
-    <i class="fas fa-paper-plane"></i>
-</button>
-
-</form>
-            </div>
-        </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
+    <!-- ==========================================
+                COMING SOON
+    =========================================== -->
+
+    <section id="journey" class="journey">
+
         <div class="container">
-            <div class="footer-content">
-                <div>© 2026 Youssef. All rights reserved.</div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-behance"></i></a>
+
+            <div class="glass-card">
+
+                <span class="badge">
+
+                    UNDER CONSTRUCTION
+
+                </span>
+
+                <h2>
+
+                    Something
+
+                    <span>
+
+                        Extraordinary
+
+                    </span>
+
+                    is Coming.
+
+                </h2>
+
+                <p>
+
+                    I'm currently creating projects that combine
+
+                    AI,
+
+                    Trading,
+
+                    Automation,
+
+                    and Modern Web Development.
+
+                </p>
+
+                <div class="terminal">
+
+                    <span id="terminal-text"></span>
+
+                    <span class="cursor">
+
+                        |
+
+                    </span>
+
                 </div>
+
+                <div class="progress-line">
+
+                    <span></span>
+
+                </div>
+
+                <small>
+
+                    Stay tuned.
+
+                    The best is yet to come.
+
+                </small>
+
             </div>
+
         </div>
-    </footer>
+
+    </section>
+
+    <!-- ==========================================
+                    CONTACT
+    =========================================== -->
+
+    <section id="contact" class="contact">
+
+        <div class="container">
+
+            <span class="section-label">
+
+                LET'S CONNECT
+
+            </span>
+
+            <h2>
+
+                Let's Build Something Great
+
+            </h2>
+
+            <p>
+
+                Whether it's trading, AI or web development,
+                I'd love to hear from you.
+
+            </p>
+
+            <!-- Keep your Formspree form here exactly as it is -->
+
+        </div>
+
+    </section>
+
     <script src="script.js"></script>
+
+</body>
 </body>
 </html>

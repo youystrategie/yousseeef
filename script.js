@@ -1,648 +1,570 @@
-// ==================== MOBILE MENU ====================
+/*=====================================================
+                PREMIUM LANDING PAGE
+                PART 1
+=====================================================*/
 
-const navLinks = document.querySelector(".nav-links");
-const navContent = document.querySelector(".nav-content");
 
-// Create hamburger button
-const menuBtn = document.createElement("button");
-menuBtn.className = "mobile-menu-btn";
-menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+// =======================================
+// Mouse Glow
+// =======================================
 
-// Add button only on mobile
-function checkMobileMenu() {
+const glow = document.querySelector(".mouse-glow");
 
-    if (window.innerWidth <= 768) {
+document.addEventListener("mousemove", (e) => {
 
-        if (!document.querySelector(".mobile-menu-btn")) {
-            navContent.appendChild(menuBtn);
-        }
+    glow.style.left = e.clientX + "px";
 
-    } else {
-
-        if (document.querySelector(".mobile-menu-btn")) {
-            menuBtn.remove();
-        }
-
-        navLinks.classList.remove("active");
-    }
-}
-
-checkMobileMenu();
-
-window.addEventListener("resize", checkMobileMenu);
-
-menuBtn.addEventListener("click", () => {
-
-    navLinks.classList.toggle("active");
-
-    const icon = menuBtn.querySelector("i");
-
-    icon.classList.toggle("fa-bars");
-    icon.classList.toggle("fa-times");
+    glow.style.top = e.clientY + "px";
 
 });
 
-// ==================== SMOOTH SCROLL ====================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            e.preventDefault();
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-            
-            // Close mobile menu after clicking
-            if (navLinks) navLinks.classList.remove('active');
-        }
-    });
-});
 
-// ==================== CONTACT FORM ====================
 
-const form = document.querySelector(".contact-form");
+// =======================================
+// Hero Typewriter
+// =======================================
 
-if (form) {
+const heroTyping = document.getElementById("typing-role");
 
-    form.addEventListener("submit", async function (e) {
+if(heroTyping){
 
-        e.preventDefault();
+const heroWords = [
 
-        const button = form.querySelector("button");
-        const originalText = button.innerHTML;
+"📈 Trader",
 
-        // Validate only required fields
-        const fields = form.querySelectorAll(
-            "input[required], textarea[required]"
-        );
+"🤖 AI Enthusiast",
 
-        let isValid = true;
+"💻 Programmer",
 
-        fields.forEach(field => {
+"🚀 Building The Future",
 
-            if (!field.value.trim()) {
+"⚡ Creating Intelligent Systems"
 
-                field.style.border = "1px solid #ef4444";
-                isValid = false;
+];
 
-            } else {
+let wordIndex = 0;
 
-                field.style.border = "1px solid #334155";
+let letterIndex = 0;
 
-            }
+let deleting = false;
 
-        });
+function heroType(){
 
-        if (!isValid) {
+const currentWord = heroWords[wordIndex];
 
-            alert("Please fill in all fields!");
-            return;
+if(!deleting){
 
-        }
+heroTyping.textContent =
 
-        // Loading
+currentWord.substring(0,letterIndex++);
 
-        button.disabled = true;
+if(letterIndex > currentWord.length){
 
-        button.innerHTML =
-            `Sending... <i class="fas fa-spinner fa-spin"></i>`;
+deleting = true;
 
-        try {
+setTimeout(heroType,1800);
 
-            const response = await fetch(form.action, {
-
-                method: "POST",
-
-                body: new FormData(form),
-
-                headers: {
-
-                    Accept: "application/json"
-
-                }
-
-            });
-
-            if (response.ok) {
-
-                button.innerHTML =
-                    `Message Sent! <i class="fas fa-check"></i>`;
-
-                button.style.background = "#16a34a";
-
-                form.reset();
-
-                showToast("✅ Thank you! Your message has been sent.");
-
-            } else {
-
-                throw new Error("Formspree Error");
-
-            }
-
-        }
-
-        catch (error) {
-
-            button.innerHTML =
-                `Send Failed <i class="fas fa-times"></i>`;
-
-            button.style.background = "#dc2626";
-
-            showToast("❌ Something went wrong. Please try again.");
-
-        }
-
-        setTimeout(() => {
-
-            button.disabled = false;
-
-            button.style.background = "";
-
-            button.innerHTML = originalText;
-
-        }, 2500);
-
-    });
+return;
 
 }
-// Toast notification function
-function showToast(message) {
-    const toast = document.createElement('div');
-    toast.style.cssText = `
-        position: fixed;
-        bottom: 25px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #1e2937;
-        color: white;
-        padding: 14px 24px;
-        border-radius: 9999px;
-        border: 1px solid #334155;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        box-shadow: 0 10px 15px rgb(15 23 42 / 0.3);
-        z-index: 1000;
-    `;
-    toast.innerHTML = `
-        <i class="fas fa-check-circle" style="color: #34d399;"></i>
-        <span>${message}</span>
-    `;
-    
-    document.body.appendChild(toast);
-    
-    setTimeout(() => {
-        toast.style.transition = 'all 0.3s ease';
-        toast.style.opacity = '0';
-        setTimeout(() => toast.remove(), 300);
-    }, 3000);
-}
 
-// ==================== PROJECT MODAL ====================
-const projectCards = document.querySelectorAll('.project-card');
+}else{
 
-projectCards.forEach(card => {
-    card.style.cursor = 'pointer';
-    
-    card.addEventListener('click', () => {
-        const title = card.querySelector('.project-title').textContent;
-        const desc = card.querySelector('.project-desc').textContent;
-        
-        const modal = document.createElement('div');
-        modal.style.cssText = `
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-        `;
-        
-        modal.innerHTML = `
-            <div style="background: #1e2937; border-radius: 20px; max-width: 600px; width: 90%; padding: 2rem; position: relative;">
-                <button style="position: absolute; top: 15px; right: 20px; background: none; border: none; color: #64748b; font-size: 1.5rem; cursor: pointer;">×</button>
-                <h2 style="font-size: 2rem; margin-bottom: 1rem;">${title}</h2>
-                <p style="color: #94a3b8; line-height: 1.7;">${desc}</p>
-                
-                <div style="margin-top: 2rem;">
-                    <button class="btn btn-primary" style="padding: 12px 28px;">View Live Project</button>
-                </div>
-            </div>
-        `;
-        
-        document.body.appendChild(modal);
-        
-        // Close modal
-        modal.querySelector('button').addEventListener('click', () => modal.remove());
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.remove();
-        });
-    });
-});
+heroTyping.textContent =
 
-// ==================== COPY EMAIL (Optional) ====================
-console.log('%c[Portfolio] JavaScript loaded successfully!', 'color:#64748b');
+currentWord.substring(0,letterIndex--);
 
-/*==================================================
-            STAY TUNED ANIMATIONS
-==================================================*/
+if(letterIndex < 0){
 
-// ================= Typing Effect =================
+deleting = false;
 
-const typingElement = document.getElementById("typing-text");
+wordIndex++;
 
-if (typingElement) {
+if(wordIndex >= heroWords.length){
 
-    const words = [
-
-        "Building AI Experiences...",
-        "Designing Modern Websites...",
-        "Creating Future Projects...",
-        "Learning. Building. Growing.",
-        "Launching Something Extraordinary..."
-
-    ];
-
-    let wordIndex = 0;
-    let letterIndex = 0;
-    let deleting = false;
-
-    function typeEffect() {
-
-        const currentWord = words[wordIndex];
-
-        if (!deleting) {
-
-            typingElement.textContent =
-                currentWord.substring(0, letterIndex++);
-
-            if (letterIndex > currentWord.length) {
-
-                deleting = true;
-
-                setTimeout(typeEffect, 1800);
-
-                return;
-
-            }
-
-        } else {
-
-            typingElement.textContent =
-                currentWord.substring(0, letterIndex--);
-
-            if (letterIndex < 0) {
-
-                deleting = false;
-
-                wordIndex++;
-
-                if (wordIndex >= words.length)
-                    wordIndex = 0;
-
-            }
-
-        }
-
-        setTimeout(typeEffect, deleting ? 35 : 80);
-
-    }
-
-    typeEffect();
+wordIndex = 0;
 
 }
 
-// ================= Mouse Glow =================
+}
 
-const section = document.querySelector(".coming-soon");
+}
 
-if(section){
+setTimeout(heroType,deleting ? 40 : 85);
 
-const glow = document.createElement("div");
+}
 
-glow.style.cssText=`
+heroType();
 
-position:absolute;
+}
 
-width:350px;
 
-height:350px;
 
-border-radius:50%;
+// =======================================
+// Journey Terminal Typewriter
+// =======================================
 
-pointer-events:none;
+const terminal =
 
-background:radial-gradient(circle,
-rgba(139,92,246,.28),
-transparent 70%);
+document.getElementById("terminal-text");
 
-filter:blur(25px);
+if(terminal){
 
-transform:translate(-50%,-50%);
+const terminalWords = [
 
-transition:
-left .12s linear,
-top .12s linear;
+"> Initializing AI Systems...",
 
-z-index:1;
+"> Connecting Trading Models...",
 
-`;
+"> Building Portfolio...",
 
-section.appendChild(glow);
+"> Deploying Future Projects...",
 
-section.addEventListener("mousemove",(e)=>{
+"> Launching Soon..."
 
-const rect=section.getBoundingClientRect();
+];
 
-glow.style.left=e.clientX-rect.left+"px";
+let terminalWord = 0;
 
-glow.style.top=e.clientY-rect.top+"px";
+let terminalLetter = 0;
+
+let terminalDelete = false;
+
+function terminalType(){
+
+const current = terminalWords[terminalWord];
+
+if(!terminalDelete){
+
+terminal.textContent =
+
+current.substring(0,terminalLetter++);
+
+if(terminalLetter > current.length){
+
+terminalDelete = true;
+
+setTimeout(terminalType,2000);
+
+return;
+
+}
+
+}else{
+
+terminal.textContent =
+
+current.substring(0,terminalLetter--);
+
+if(terminalLetter < 0){
+
+terminalDelete = false;
+
+terminalWord++;
+
+if(terminalWord >= terminalWords.length){
+
+terminalWord = 0;
+
+}
+
+}
+
+}
+
+setTimeout(terminalType,
+
+terminalDelete ? 25 : 60);
+
+}
+
+terminalType();
+
+}
+
+
+
+// =======================================
+// Hero Parallax
+// =======================================
+
+const auroras =
+
+document.querySelectorAll(".aurora");
+
+document.addEventListener("mousemove",(e)=>{
+
+const x =
+
+(e.clientX/window.innerWidth)-0.5;
+
+const y =
+
+(e.clientY/window.innerHeight)-0.5;
+
+auroras.forEach((orb,index)=>{
+
+const speed = (index+1)*18;
+
+orb.style.transform =
+
+`translate(
+
+${x*speed}px,
+
+${y*speed}px
+
+)`;
 
 });
 
-}
+});
 
-// ================= Twinkling Stars =================
 
-if(section){
 
-for(let i=0;i<60;i++){
+// =======================================
+// Reveal Animation
+// =======================================
 
-const star=document.createElement("span");
+const reveals =
 
-star.className="star";
+document.querySelectorAll(
 
-star.style.left=Math.random()*100+"%";
-
-star.style.top=Math.random()*100+"%";
-
-star.style.animationDelay=Math.random()*5+"s";
-
-star.style.animationDuration=(2+Math.random()*4)+"s";
-
-section.appendChild(star);
-
-}
-
-}
-
-// ================= Scroll Reveal =================
-
-const revealItems=document.querySelectorAll(
-
-".coming-label,.coming-title,.coming-text,.typing-wrapper,.loader,.coming-footer"
+".hero-content,.glass-card,.contact"
 
 );
 
-const observer=new IntersectionObserver(entries=>{
+const observer =
+
+new IntersectionObserver(entries=>{
 
 entries.forEach(entry=>{
 
 if(entry.isIntersecting){
 
-entry.target.style.opacity="1";
-
-entry.target.style.transform="translateY(0)";
+entry.target.classList.add("show");
 
 }
 
 });
 
-},{threshold:.2});
+},{
 
-revealItems.forEach(item=>{
-
-item.style.opacity="0";
-
-item.style.transform="translateY(50px)";
-
-item.style.transition="all 1s ease";
-
-observer.observe(item);
+threshold:.2
 
 });
 
-// ================= Floating Animation =================
+reveals.forEach(el=>{
 
-const orbs=document.querySelectorAll(".floating-orb");
+el.classList.add("hidden");
 
-orbs.forEach((orb,index)=>{
+observer.observe(el);
 
-let angle=Math.random()*360;
+});
+
+
+
+// =======================================
+// Intro Fade
+// =======================================
+
+window.addEventListener("load",()=>{
+
+document.body.style.opacity="1";
+
+});
+
+/*=====================================================
+                PREMIUM LANDING PAGE
+                PART 2
+=====================================================*/
+
+
+
+// =======================================
+// Floating Particles
+// =======================================
+
+const stars = document.querySelector(".stars");
+
+if(stars){
+
+for(let i=0;i<80;i++){
+
+const particle=document.createElement("span");
+
+particle.className="particle";
+
+particle.style.left=Math.random()*100+"%";
+
+particle.style.top=Math.random()*100+"%";
+
+particle.style.animationDelay=Math.random()*6+"s";
+
+particle.style.animationDuration=
+4+Math.random()*8+"s";
+
+particle.style.opacity=Math.random();
+
+stars.appendChild(particle);
+
+}
+
+}
+
+
+
+// =======================================
+// Particle Animation
+// =======================================
+
+document.querySelectorAll(".particle").forEach(p=>{
 
 setInterval(()=>{
 
-angle+=0.4+(index*0.08);
+p.style.transform=
 
-orb.style.transform=
+`translateY(${-80-Math.random()*80}px)`;
 
-`translate(
-${Math.sin(angle*Math.PI/180)*20}px,
-${Math.cos(angle*Math.PI/180)*20}px)`;
-
-},25);
+},3000+Math.random()*3000);
 
 });
 
-/*==================================================
-                PREMIUM HERO
-==================================================*/
 
-// ================= TYPEWRITER =================
 
-const role = document.getElementById("typing-role");
+// =======================================
+// Shooting Stars
+// =======================================
 
-if (role) {
+function createStar(){
 
-    const roles = [
+const star=document.createElement("div");
 
-        "📈 Trader",
-        "🤖 AI Enthusiast",
-        "💻 Programmer",
-        "🚀 Building My Future",
-        "✨ Turning Ideas Into Reality"
+star.className="shooting-star";
 
-    ];
+star.style.top=Math.random()*40+"%";
 
-    let roleIndex = 0;
-    let charIndex = 0;
-    let deleting = false;
+star.style.left="-200px";
 
-    function typeRole() {
+document.body.appendChild(star);
 
-        const current = roles[roleIndex];
+setTimeout(()=>{
 
-        if (!deleting) {
+star.remove();
 
-            role.textContent = current.substring(0, charIndex++);
-
-            if (charIndex > current.length) {
-
-                deleting = true;
-
-                setTimeout(typeRole, 1700);
-
-                return;
-
-            }
-
-        } else {
-
-            role.textContent = current.substring(0, charIndex--);
-
-            if (charIndex < 0) {
-
-                deleting = false;
-
-                roleIndex++;
-
-                if (roleIndex >= roles.length)
-                    roleIndex = 0;
-
-            }
-
-        }
-
-        setTimeout(typeRole, deleting ? 40 : 80);
-
-    }
-
-    typeRole();
+},7000);
 
 }
 
-
-// ================= MOUSE PARALLAX =================
-
-const hero = document.querySelector(".hero");
-
-const gradients = document.querySelectorAll(
-".gradient-1,.gradient-2,.gradient-3"
-);
-
-if(hero){
-
-hero.addEventListener("mousemove",(e)=>{
-
-const x=(e.clientX/window.innerWidth)-0.5;
-const y=(e.clientY/window.innerHeight)-0.5;
-
-gradients.forEach((g,index)=>{
-
-const speed=(index+1)*18;
-
-g.style.transform=
-`translate(${x*speed}px,${y*speed}px)`;
-
-});
-
-});
-
-}
+setInterval(createStar,7000);
 
 
-// ================= CURSOR GLOW =================
 
-if(hero){
+// =======================================
+// Sparkles
+// =======================================
 
-const glow=document.createElement("div");
+function sparkle(){
 
-glow.className="cursor-glow";
+const hero=document.querySelector(".hero");
 
-hero.appendChild(glow);
+if(!hero) return;
 
-hero.addEventListener("mousemove",(e)=>{
+const dot=document.createElement("div");
 
-const rect=hero.getBoundingClientRect();
-
-glow.style.left=(e.clientX-rect.left)+"px";
-
-glow.style.top=(e.clientY-rect.top)+"px";
-
-});
-
-}
-
-
-// ================= HERO PARTICLES =================
-
-const particles=document.querySelector(".particles");
-
-if(particles){
-
-for(let i=0;i<45;i++){
-
-const dot=document.createElement("span");
-
-dot.className="particle";
+dot.className="sparkle";
 
 dot.style.left=Math.random()*100+"%";
 
 dot.style.top=Math.random()*100+"%";
 
-dot.style.animationDuration=
-6+Math.random()*8+"s";
+hero.appendChild(dot);
 
-dot.style.animationDelay=
-Math.random()*5+"s";
+setTimeout(()=>{
 
-particles.appendChild(dot);
+dot.remove();
+
+},2200);
+
+}
+
+setInterval(sparkle,900);
+
+
+
+// =======================================
+// Floating Icons
+// =======================================
+
+const icons=
+
+document.querySelectorAll(".float-icon");
+
+icons.forEach((icon,index)=>{
+
+let angle=Math.random()*360;
+
+setInterval(()=>{
+
+angle+=0.4;
+
+icon.style.transform=
+
+`translateY(
+
+${Math.sin(angle*Math.PI/180)*12}px
+
+)
+
+rotate(
+
+${Math.cos(angle*Math.PI/180)*8}deg
+
+)`;
+
+},25);
+
+});
+
+
+
+// =======================================
+// Mobile Menu
+// =======================================
+
+const nav=document.querySelector(".nav-content");
+
+const navLinks=document.querySelector(".nav-links");
+
+const menu=document.createElement("button");
+
+menu.className="mobile-menu-btn";
+
+menu.innerHTML='<i class="fas fa-bars"></i>';
+
+function checkMenu(){
+
+if(window.innerWidth<=768){
+
+if(!document.querySelector(".mobile-menu-btn")){
+
+nav.appendChild(menu);
+
+}
+
+}else{
+
+if(document.querySelector(".mobile-menu-btn")){
+
+menu.remove();
+
+}
+
+navLinks.classList.remove("active");
 
 }
 
 }
 
+checkMenu();
 
-// ================= HERO REVEAL =================
+window.addEventListener("resize",checkMenu);
 
-const heroItems=document.querySelectorAll(
+menu.addEventListener("click",()=>{
 
-".wave-container,.hero-title,#typing-role,.hero-description,.hero-buttons,.scroll-indicator"
+navLinks.classList.toggle("active");
 
-);
+const icon=menu.querySelector("i");
 
-const heroObserver=new IntersectionObserver(entries=>{
+icon.classList.toggle("fa-bars");
 
-entries.forEach(entry=>{
+icon.classList.toggle("fa-times");
 
-if(entry.isIntersecting){
+});
 
-entry.target.style.opacity="1";
 
-entry.target.style.transform="translateY(0)";
+
+// =======================================
+// Close Menu
+// =======================================
+
+document.querySelectorAll(".nav-links a")
+
+.forEach(link=>{
+
+link.addEventListener("click",()=>{
+
+navLinks.classList.remove("active");
+
+});
+
+});
+
+
+
+// =======================================
+// Scroll Indicator
+// =======================================
+
+window.addEventListener("scroll",()=>{
+
+const scroll=document.querySelector(".scroll-down");
+
+if(!scroll) return;
+
+if(window.scrollY>150){
+
+scroll.style.opacity="0";
+
+}else{
+
+scroll.style.opacity="1";
 
 }
 
 });
 
-},{threshold:.2});
-
-heroItems.forEach(item=>{
-
-item.style.opacity="0";
-
-item.style.transform="translateY(50px)";
-
-item.style.transition="1s ease";
-
-heroObserver.observe(item);
-
-});
 
 
-// ================= FLOAT BUTTONS =================
+// =======================================
+// Floating Glow
+// =======================================
 
-document.querySelectorAll(".hero-buttons .btn")
+const background=document.querySelector(".background");
+
+setInterval(()=>{
+
+const glow=document.createElement("div");
+
+glow.className="ambient-glow";
+
+glow.style.left=Math.random()*100+"%";
+
+glow.style.top=Math.random()*100+"%";
+
+background.appendChild(glow);
+
+setTimeout(()=>{
+
+glow.remove();
+
+},8000);
+
+},2500);
+
+
+
+// =======================================
+// Hero Buttons Hover
+// =======================================
+
+document.querySelectorAll(".btn")
 
 .forEach(btn=>{
 
 btn.addEventListener("mouseenter",()=>{
 
-btn.style.transform="translateY(-6px)";
+btn.style.transform="translateY(-5px)";
 
 });
 
@@ -654,25 +576,271 @@ btn.style.transform="translateY(0px)";
 
 });
 
+/*=====================================================
+            FORM & FINAL INTERACTIONS
+=====================================================*/
 
-// ================= RANDOM SPARKLES =================
 
-setInterval(()=>{
+// =======================================
+// Formspree Contact Form
+// =======================================
 
-const sparkle=document.createElement("div");
+const form = document.getElementById("contact-form");
 
-sparkle.className="sparkle";
+if(form){
 
-sparkle.style.left=Math.random()*100+"%";
+const status = document.getElementById("form-status");
 
-sparkle.style.top=Math.random()*100+"%";
+const submitBtn =
 
-hero.appendChild(sparkle);
+form.querySelector(".contact-btn");
+
+const btnText =
+
+submitBtn.querySelector("span");
+
+const endpoint =
+
+"https://formspree.io/f/xojozdgb";
+
+form.addEventListener("submit",async(e)=>{
+
+e.preventDefault();
+
+status.textContent="";
+
+status.className="";
+
+submitBtn.disabled=true;
+
+btnText.textContent="Sending...";
+
+submitBtn.innerHTML=
+
+'<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+try{
+
+const response=await fetch(endpoint,{
+
+method:"POST",
+
+body:new FormData(form),
+
+headers:{
+
+"Accept":"application/json"
+
+}
+
+});
+
+if(response.ok){
+
+status.textContent=
+
+"✅ Your message has been sent successfully!";
+
+status.classList.add("success");
+
+form.reset();
+
+}else{
+
+const data=await response.json();
+
+if(data.errors){
+
+status.textContent=
+
+data.errors.map(
+
+e=>e.message
+
+).join(", ");
+
+}else{
+
+status.textContent=
+
+"❌ Something went wrong.";
+
+}
+
+status.classList.add("error");
+
+}
+
+}catch(err){
+
+status.textContent=
+
+"❌ Network error. Please try again.";
+
+status.classList.add("error");
+
+}
+
+submitBtn.disabled=false;
+
+submitBtn.innerHTML=
+
+'<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+
+});
+
+}
+
+
+
+// =======================================
+// Navbar Active Link
+// =======================================
+
+const sections=
+
+document.querySelectorAll("section");
+
+const navItems=
+
+document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll",()=>{
+
+let current="";
+
+sections.forEach(section=>{
+
+const top=
+
+section.offsetTop-120;
+
+if(scrollY>=top){
+
+current=section.getAttribute("id");
+
+}
+
+});
+
+navItems.forEach(link=>{
+
+link.classList.remove("active");
+
+if(
+
+link.getAttribute("href")==="#"+current
+
+){
+
+link.classList.add("active");
+
+}
+
+});
+
+});
+
+
+
+// =======================================
+// Button Ripple Effect
+// =======================================
+
+document.querySelectorAll(".btn")
+
+.forEach(button=>{
+
+button.addEventListener("click",(e)=>{
+
+const circle=
+
+document.createElement("span");
+
+const size=
+
+Math.max(
+
+button.clientWidth,
+
+button.clientHeight
+
+);
+
+circle.style.width=size+"px";
+
+circle.style.height=size+"px";
+
+circle.style.left=
+
+e.offsetX-size/2+"px";
+
+circle.style.top=
+
+e.offsetY-size/2+"px";
+
+circle.classList.add("ripple");
+
+button.appendChild(circle);
 
 setTimeout(()=>{
 
-sparkle.remove();
+circle.remove();
 
-},2000);
+},600);
 
-},500);
+});
+
+});
+
+
+
+// =======================================
+// Footer Year
+// =======================================
+
+const year=
+
+document.getElementById("year");
+
+if(year){
+
+year.textContent=
+
+new Date().getFullYear();
+
+}
+
+
+
+// =======================================
+// Console Welcome
+// =======================================
+
+console.log(
+
+"%cWelcome to Youssef's Portfolio 🚀",
+
+"color:#8b5cf6;font-size:18px;font-weight:bold;"
+
+);
+
+console.log(
+
+"%cDesigned with ❤️ using HTML, CSS & JavaScript",
+
+"color:#94a3b8;font-size:14px;"
+
+);
+
+
+
+// =======================================
+// Finished Loading
+// =======================================
+
+window.addEventListener("load",()=>{
+
+document.body.classList.add("loaded");
+
+});
