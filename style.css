@@ -397,6 +397,76 @@ footer {
     color: white;
 }
 
+/* ================= CONTACT BUTTON ================= */
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 16px 34px;
+
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+
+    color: white;
+
+    border: none;
+
+    border-radius: 50px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all .35s ease;
+
+    box-shadow:
+        0 10px 25px rgba(99,102,241,.35);
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.contact-btn i{
+    transition:.35s;
+}
+
+.contact-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 18px 35px rgba(99,102,241,.45);
+
+    background:linear-gradient(135deg,#7c3aed,#6366f1);
+}
+
+.contact-btn:hover i{
+
+    transform:translateX(6px) rotate(-15deg);
+
+}
+
+.contact-btn:active{
+
+    transform:scale(.97);
+
+}
+
+.contact-btn:disabled{
+
+    opacity:.7;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links {
