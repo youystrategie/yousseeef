@@ -246,3 +246,204 @@ projectCards.forEach(card => {
 
 // ==================== COPY EMAIL (Optional) ====================
 console.log('%c[Portfolio] JavaScript loaded successfully!', 'color:#64748b');
+
+/*==================================================
+            STAY TUNED ANIMATIONS
+==================================================*/
+
+// ================= Typing Effect =================
+
+const typingElement = document.getElementById("typing-text");
+
+if (typingElement) {
+
+    const words = [
+
+        "Building AI Experiences...",
+        "Designing Modern Websites...",
+        "Creating Future Projects...",
+        "Learning. Building. Growing.",
+        "Launching Something Extraordinary..."
+
+    ];
+
+    let wordIndex = 0;
+    let letterIndex = 0;
+    let deleting = false;
+
+    function typeEffect() {
+
+        const currentWord = words[wordIndex];
+
+        if (!deleting) {
+
+            typingElement.textContent =
+                currentWord.substring(0, letterIndex++);
+
+            if (letterIndex > currentWord.length) {
+
+                deleting = true;
+
+                setTimeout(typeEffect, 1800);
+
+                return;
+
+            }
+
+        } else {
+
+            typingElement.textContent =
+                currentWord.substring(0, letterIndex--);
+
+            if (letterIndex < 0) {
+
+                deleting = false;
+
+                wordIndex++;
+
+                if (wordIndex >= words.length)
+                    wordIndex = 0;
+
+            }
+
+        }
+
+        setTimeout(typeEffect, deleting ? 35 : 80);
+
+    }
+
+    typeEffect();
+
+}
+
+// ================= Mouse Glow =================
+
+const section = document.querySelector(".coming-soon");
+
+if(section){
+
+const glow = document.createElement("div");
+
+glow.style.cssText=`
+
+position:absolute;
+
+width:350px;
+
+height:350px;
+
+border-radius:50%;
+
+pointer-events:none;
+
+background:radial-gradient(circle,
+rgba(139,92,246,.28),
+transparent 70%);
+
+filter:blur(25px);
+
+transform:translate(-50%,-50%);
+
+transition:
+left .12s linear,
+top .12s linear;
+
+z-index:1;
+
+`;
+
+section.appendChild(glow);
+
+section.addEventListener("mousemove",(e)=>{
+
+const rect=section.getBoundingClientRect();
+
+glow.style.left=e.clientX-rect.left+"px";
+
+glow.style.top=e.clientY-rect.top+"px";
+
+});
+
+}
+
+// ================= Twinkling Stars =================
+
+if(section){
+
+for(let i=0;i<60;i++){
+
+const star=document.createElement("span");
+
+star.className="star";
+
+star.style.left=Math.random()*100+"%";
+
+star.style.top=Math.random()*100+"%";
+
+star.style.animationDelay=Math.random()*5+"s";
+
+star.style.animationDuration=(2+Math.random()*4)+"s";
+
+section.appendChild(star);
+
+}
+
+}
+
+// ================= Scroll Reveal =================
+
+const revealItems=document.querySelectorAll(
+
+".coming-label,.coming-title,.coming-text,.typing-wrapper,.loader,.coming-footer"
+
+);
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+},{threshold:.2});
+
+revealItems.forEach(item=>{
+
+item.style.opacity="0";
+
+item.style.transform="translateY(50px)";
+
+item.style.transition="all 1s ease";
+
+observer.observe(item);
+
+});
+
+// ================= Floating Animation =================
+
+const orbs=document.querySelectorAll(".floating-orb");
+
+orbs.forEach((orb,index)=>{
+
+let angle=Math.random()*360;
+
+setInterval(()=>{
+
+angle+=0.4+(index*0.08);
+
+orb.style.transform=
+
+`translate(
+${Math.sin(angle*Math.PI/180)*20}px,
+${Math.cos(angle*Math.PI/180)*20}px)`;
+
+},25);
+
+});

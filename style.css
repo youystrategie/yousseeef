@@ -617,3 +617,395 @@ footer {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.3; }
 }
+
+
+/*==================================================
+                STAY TUNED SECTION
+==================================================*/
+
+.coming-soon{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:180px 20px;
+
+    background:
+    radial-gradient(circle at 20% 20%,rgba(99,102,241,.12),transparent 35%),
+    radial-gradient(circle at 80% 70%,rgba(168,85,247,.12),transparent 35%),
+    linear-gradient(180deg,#0f172a,#16132f,#0f172a);
+
+}
+
+.coming-content{
+
+    max-width:850px;
+
+    margin:auto;
+
+    text-align:center;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.coming-label{
+
+    display:inline-block;
+
+    padding:10px 22px;
+
+    border-radius:999px;
+
+    background:rgba(99,102,241,.12);
+
+    border:1px solid rgba(99,102,241,.35);
+
+    color:#a5b4fc;
+
+    font-weight:600;
+
+    letter-spacing:2px;
+
+    animation:fadeDown 1s ease;
+
+}
+
+.coming-title{
+
+    margin-top:35px;
+
+    font-size:clamp(3rem,7vw,5.8rem);
+
+    line-height:1;
+
+    font-family:"Space Grotesk",sans-serif;
+
+    animation:fadeUp 1s ease;
+
+}
+
+.coming-title span{
+
+    background:linear-gradient(90deg,#6366f1,#8b5cf6,#ec4899,#6366f1);
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:gradientMove 6s linear infinite;
+
+}
+
+.coming-text{
+
+    margin:40px auto;
+
+    max-width:650px;
+
+    color:#94a3b8;
+
+    font-size:1.25rem;
+
+    line-height:1.9;
+
+    animation:fadeUp 1.3s ease;
+
+}
+
+.typing-wrapper{
+
+    margin-top:35px;
+
+    min-height:45px;
+
+    font-size:1.6rem;
+
+    font-weight:700;
+
+    color:#ffffff;
+
+    letter-spacing:.5px;
+
+}
+
+.cursor{
+
+    animation:blink .8s infinite;
+
+}
+
+.loader{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    margin:45px 0;
+
+}
+
+.loader span{
+
+    width:14px;
+
+    height:14px;
+
+    border-radius:50%;
+
+    background:#8b5cf6;
+
+    animation:bounce 1.2s infinite;
+
+}
+
+.loader span:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+.loader span:nth-child(3){
+
+    animation-delay:.4s;
+
+}
+
+.coming-footer{
+
+    color:#64748b;
+
+    font-size:1.1rem;
+
+    letter-spacing:1px;
+
+}
+
+/*================ Floating Orbs ================*/
+
+.floating-orb{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(70px);
+
+    animation:float 8s ease-in-out infinite;
+
+}
+
+.orb-1{
+
+    width:350px;
+
+    height:350px;
+
+    background:#6366f1;
+
+    top:-80px;
+
+    left:-120px;
+
+}
+
+.orb-2{
+
+    width:280px;
+
+    height:280px;
+
+    background:#9333ea;
+
+    right:-80px;
+
+    bottom:50px;
+
+    animation-duration:10s;
+
+}
+
+.orb-3{
+
+    width:170px;
+
+    height:170px;
+
+    background:#ec4899;
+
+    top:45%;
+
+    left:60%;
+
+    animation-duration:6s;
+
+}
+
+/*================ Stars ================*/
+
+.coming-soon::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+    radial-gradient(#fff 1px,transparent 1px);
+
+    background-size:70px 70px;
+
+    opacity:.08;
+
+    animation:starsMove 35s linear infinite;
+
+}
+
+/*================ Animations ================*/
+
+@keyframes gradientMove{
+
+0%{background-position:0%}
+
+100%{background-position:300%}
+
+}
+
+@keyframes float{
+
+0%,100%{
+
+transform:translateY(0px) translateX(0px);
+
+}
+
+50%{
+
+transform:translateY(-30px) translateX(25px);
+
+}
+
+}
+
+@keyframes bounce{
+
+0%,100%{
+
+transform:translateY(0);
+
+opacity:.5;
+
+}
+
+50%{
+
+transform:translateY(-18px);
+
+opacity:1;
+
+}
+
+}
+
+@keyframes blink{
+
+50%{
+
+opacity:0;
+
+}
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(45px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes fadeDown{
+
+from{
+
+opacity:0;
+
+transform:translateY(-35px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes starsMove{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(-150px);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.coming-soon{
+
+padding:120px 20px;
+
+}
+
+.coming-title{
+
+font-size:3rem;
+
+}
+
+.coming-text{
+
+font-size:1rem;
+
+}
+
+.typing-wrapper{
+
+font-size:1.2rem;
+
+}
+
+}
