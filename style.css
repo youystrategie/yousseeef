@@ -986,7 +986,10 @@ transform:translateY(-150px);
 
 .coming-soon{
 
-padding:120px 20px;
+margin-top:-120px;
+padding:250px 20px 180px;
+z-index:2;
+position:relative;
 
 }
 
