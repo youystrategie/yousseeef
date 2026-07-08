@@ -2082,3 +2082,51 @@ padding:35px 28px;
     transform:translateY(-3px);
 
 }
+
+.consultation-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin:30px 0;
+
+    padding:18px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:16px;
+
+    background:#181818;
+
+}
+
+.consultation-box i{
+
+    font-size:1.4rem;
+
+    color:#fff;
+
+}
+
+.consultation-box h4{
+
+    margin-bottom:4px;
+
+    color:#fff;
+
+    font-size:1rem;
+
+}
+
+.consultation-box p{
+
+    margin:0;
+
+    color:#9c9c9c;
+
+    font-size:.9rem;
+
+}
