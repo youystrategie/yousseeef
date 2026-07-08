@@ -585,111 +585,112 @@ btn.style.transform="translateY(0px)";
 // Formspree Contact Form
 // =======================================
 
-const form = document.getElementById("contact-form");
+// =======================================
+// Premium Contact Form
+// =======================================
 
-if(form){
+const contactForm = document.getElementById("contact-form");
 
-const status = document.getElementById("form-status");
+if(contactForm){
 
-const submitBtn =
+    const submitBtn = contactForm.querySelector(".contact-btn");
+    const status = document.getElementById("form-status");
+    const btnText = submitBtn.querySelector("span");
+    const btnIcon = submitBtn.querySelector("i");
 
-form.querySelector(".contact-btn");
+    contactForm.addEventListener("submit", async function(e){
 
-const btnText =
+        e.preventDefault();
 
-submitBtn.querySelector("span");
+        status.textContent = "";
+        status.className = "";
 
-const endpoint =
+        submitBtn.disabled = true;
 
-"https://formspree.io/f/xojozdgb";
+        btnText.textContent = "Sending...";
+        btnIcon.className = "fas fa-spinner fa-spin";
 
-form.addEventListener("submit",async(e)=>{
+        try{
 
-e.preventDefault();
+            const response = await fetch(contactForm.action,{
 
-status.textContent="";
+                method:"POST",
 
-status.className="";
+                body:new FormData(contactForm),
 
-submitBtn.disabled=true;
+                headers:{
+                    "Accept":"application/json"
+                }
 
-btnText.textContent="Sending...";
+            });
 
-submitBtn.innerHTML=
+            if(response.ok){
 
-'<i class="fas fa-spinner fa-spin"></i> Sending...';
+                status.textContent =
+                "✅ Message sent successfully!";
 
-try{
+                status.className="success";
 
-const response=await fetch(endpoint,{
+                btnText.textContent="Sent";
 
-method:"POST",
+                btnIcon.className="fas fa-check";
 
-body:new FormData(form),
+                contactForm.reset();
 
-headers:{
+                setTimeout(()=>{
 
-"Accept":"application/json"
+                    btnText.textContent="Send Message";
+                    btnIcon.className="fas fa-paper-plane";
+
+                    submitBtn.disabled=false;
+
+                },2500);
+
+            }else{
+
+                throw new Error();
+
+            }
+
+        }catch{
+
+            status.textContent =
+            "❌ Failed to send your message. Please try again.";
+
+            status.className="error";
+
+            btnText.textContent="Try Again";
+            btnIcon.className="fas fa-paper-plane";
+
+            submitBtn.disabled=false;
+
+        }
+
+    });
 
 }
+
+// =======================================
+// Input Glow Animation
+// =======================================
+
+document.querySelectorAll(".form-input, .form-textarea")
+
+.forEach(input=>{
+
+    input.addEventListener("focus",()=>{
+
+        input.parentElement.style.transform="translateY(-3px)";
+
+    });
+
+    input.addEventListener("blur",()=>{
+
+        input.parentElement.style.transform="translateY(0px)";
+
+    });
 
 });
-
-if(response.ok){
-
-status.textContent=
-
-"✅ Your message has been sent successfully!";
-
-status.classList.add("success");
-
-form.reset();
-
-}else{
-
-const data=await response.json();
-
-if(data.errors){
-
-status.textContent=
-
-data.errors.map(
-
-e=>e.message
-
-).join(", ");
-
-}else{
-
-status.textContent=
-
-"❌ Something went wrong.";
-
-}
-
-status.classList.add("error");
-
-}
-
-}catch(err){
-
-status.textContent=
-
-"❌ Network error. Please try again.";
-
-status.classList.add("error");
-
-}
-
-submitBtn.disabled=false;
-
-submitBtn.innerHTML=
-
-'<span>Send Message</span><i class="fas fa-paper-plane"></i>';
-
-});
-
-}
 
 
 
