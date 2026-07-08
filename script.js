@@ -745,52 +745,28 @@ link.classList.add("active");
 
 
 // =======================================
-// Button Ripple Effect
+// Smooth Navigation
 // =======================================
 
-document.querySelectorAll(".btn")
+document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-.forEach(button=>{
+    link.addEventListener("click", function(e) {
 
-button.addEventListener("click",(e)=>{
+        const target = document.querySelector(this.getAttribute("href"));
 
-const circle=
+        if(!target) return;
 
-document.createElement("span");
+        e.preventDefault();
 
-const size=
+        target.scrollIntoView({
 
-Math.max(
+            behavior: "smooth",
 
-button.clientWidth,
+            block: "start"
 
-button.clientHeight
+        });
 
-);
-
-circle.style.width=size+"px";
-
-circle.style.height=size+"px";
-
-circle.style.left=
-
-e.offsetX-size/2+"px";
-
-circle.style.top=
-
-e.offsetY-size/2+"px";
-
-circle.classList.add("ripple");
-
-button.appendChild(circle);
-
-setTimeout(()=>{
-
-circle.remove();
-
-},600);
-
-});
+    });
 
 });
 
