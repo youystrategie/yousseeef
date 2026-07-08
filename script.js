@@ -76,12 +76,75 @@ if (container) {
 
     scene.add(sphere);
 
+    /*==========================
+        ORBIT RINGS
+==========================*/
+
+const ringMaterial = new THREE.MeshStandardMaterial({
+
+    color:0xffffff,
+
+    metalness:1,
+
+    roughness:.2,
+
+    transparent:true,
+
+    opacity:.28
+
+});
+
+const ring1 = new THREE.Mesh(
+
+    new THREE.TorusGeometry(1.55,.015,32,220),
+
+    ringMaterial
+
+);
+
+ring1.rotation.x=Math.PI/2;
+
+scene.add(ring1);
+
+
+const ring2 = new THREE.Mesh(
+
+    new THREE.TorusGeometry(1.8,.015,32,220),
+
+    ringMaterial
+
+);
+
+ring2.rotation.y=Math.PI/3;
+
+ring2.rotation.x=.5;
+
+scene.add(ring2);
+
+
+const ring3 = new THREE.Mesh(
+
+    new THREE.TorusGeometry(2.05,.012,32,220),
+
+    ringMaterial
+
+);
+
+ring3.rotation.z=Math.PI/4;
+
+scene.add(ring3);
+
     // Animation
     function animate() {
 
         requestAnimationFrame(animate);
 
         sphere.rotation.y += 0.004;
+        ring1.rotation.z += .003;
+
+        ring2.rotation.x += .002;
+
+        ring3.rotation.y -= .0015;
         sphere.rotation.x += 0.001;
 
         sphere.position.y = Math.sin(Date.now() * 0.0015) * 0.15;
