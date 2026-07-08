@@ -1,19 +1,45 @@
 // ==================== MOBILE MENU ====================
-const navLinks = document.querySelector('.nav-links');
-const menuBtn = document.createElement('button');
-menuBtn.className = 'mobile-menu-btn';
+
+const navLinks = document.querySelector(".nav-links");
+const navContent = document.querySelector(".nav-content");
+
+// Create hamburger button
+const menuBtn = document.createElement("button");
+menuBtn.className = "mobile-menu-btn";
 menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
 
-const navContent = document.querySelector('.nav-content');
-if (window.innerWidth <= 768) {
-    navContent.appendChild(menuBtn);
+// Add button only on mobile
+function checkMobileMenu() {
+
+    if (window.innerWidth <= 768) {
+
+        if (!document.querySelector(".mobile-menu-btn")) {
+            navContent.appendChild(menuBtn);
+        }
+
+    } else {
+
+        if (document.querySelector(".mobile-menu-btn")) {
+            menuBtn.remove();
+        }
+
+        navLinks.classList.remove("active");
+    }
 }
 
-menuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    const icon = menuBtn.querySelector('i');
-    icon.classList.toggle('fa-bars');
-    icon.classList.toggle('fa-times');
+checkMobileMenu();
+
+window.addEventListener("resize", checkMobileMenu);
+
+menuBtn.addEventListener("click", () => {
+
+    navLinks.classList.toggle("active");
+
+    const icon = menuBtn.querySelector("i");
+
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-times");
+
 });
 
 // ==================== SMOOTH SCROLL ====================
