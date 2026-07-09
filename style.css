@@ -2253,7 +2253,11 @@ font-size:2.2rem;
 
 .live{
 
-    color:#3ddc84;
+    color:#44d07b;
+
+    font-weight:600;
+
+    font-size:.85rem;
 
 }
 
@@ -2370,5 +2374,31 @@ grid-template-columns:1fr;
 padding:28px;
 
 }
+
+}
+
+.project-label{
+
+    display:inline-block;
+
+    padding:6px 14px;
+
+    margin-bottom:18px;
+
+    border-radius:999px;
+
+    border:1px solid #2d2d2d;
+
+    background:#181818;
+
+    color:#bdbdbd;
+
+    font-size:.72rem;
+
+    font-weight:600;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
 
 }
