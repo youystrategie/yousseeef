@@ -2223,7 +2223,7 @@ font-size:2.2rem;
 
     display:flex;
 
-    gap:18px;
+    justify-content:center;
 
 }
 
